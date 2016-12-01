@@ -1,4 +1,4 @@
-# Javascript Skimmer Callback URLs
+# Javascript Skimmer Callback URLs from Compromised Sites
 
 ## Results
 The URLs listed in indicators.md were parsed from one of the many compromised domains that had one of the Javascript skimmer varieties listed [here](https://github.com/gwillem/magento-malware-collection) running on their website.  These indicators are the URLs to which stolen credit card data is sent once it is skimmed from a website.
@@ -6,7 +6,7 @@ The URLs listed in indicators.md were parsed from one of the many compromised do
 There are two lists of indicators in indicators.md.  It is highly probable or, in some cases, confirmed that the indicators in the first list are malicious.  Indicators in the second list are more likely to be false positives.  I am conducting further analysis of these indicators in ThreatConnect [here](https://app.threatconnect.com/auth/incident/incident.xhtml?incident=2642112).
 
 ## Background
-On Tuesday, October 4, Willem de Groot [reported](https://gwillem.gitlab.io/2016/10/04/how-republicans-send-your-credit-card-to-russia/) that the National Republican Senatorial Committee's website had a Javascript skimmer running on it that was collecting credit card numbers and other information from anyone who purchased an item from the site.  He did some further analysis that uncovered many other domains that had some variation of the Javascript skimmer running on their site.  Willem de Groot created a snippet [here](https://gitlab.com/gwillem/public-snippets/snippets/28813) providing a list of sites compromised with some form of this malware.  I have attempted to identify all of the URLs to which the skimmers submit stolen information (I describe my methods in the section below).
+On Tuesday, October 4, Willem de Groot [reported](https://gwillem.gitlab.io/2016/10/04/how-republicans-send-your-credit-card-to-russia/) that the National Republican Senatorial Committee's website had a Javascript skimmer running on it that was collecting credit card numbers and other information from anyone who purchased an item from the site.  He did some further analysis that uncovered many other domains that had some variation of the Javascript skimmer running on their site.  Willem de Groot created a snippet [here](https://gitlab.com/gwillem/public-snippets/snippets/28813) providing a list of sites compromised with some form of this malware.  I have attempted to identify all of the URLs to which the skimmers submit stolen information.  Continue to the next section to read my methodology.
 
 ## Methodology
 Shortly after Willem de Groot released the list of sites running a form of the malicious code, I collected the html from each infected domain.  I then went through each of the skimmer variants that could be easily deobfuscated and developed a regex to parse out the callback URL used in each instance of that variant.  Here are the regexes I used to parse callback URLs along with the [name of the variant](https://github.com/gwillem/magento-malware-collection/tree/master/malware/frontend) for which the regex was developed:
@@ -38,7 +38,7 @@ cloudfusion.me.js: 13
 gate.php.js: 15
 grelos_v.js: 1
 grelos_v_simple.js: 42
-infopromo.biz.js: todo: consider adding the callbacks from this regex (I can check to see if the sites found by this regex are in the list of compromised domains)
+infopromo.biz.js: 12
 jquery-code.su-charcode.js: 3
 js-save.link.js: 2625
 mage-cdn.link.js: 88
